@@ -72,10 +72,16 @@ describe("Used By page", () => {
     }
   });
 
-  test("before clips are added: placeholders, no broken video or image requests", () => {
+  test("every world has its clip, muted and lazy; no placeholders left", () => {
     const { container } = render(<UsedByPage />);
-    expect(container.querySelectorAll('[data-placeholder="video"]')).toHaveLength(6);
-    expect(container.querySelector("video, img")).toBeNull();
+    expect(container.querySelectorAll('[data-placeholder="video"]')).toHaveLength(0);
+    const videos = [...container.querySelectorAll("video")];
+    // 4 landscape clips + 2 portrait clips rendered twice (phone + desktop layouts)
+    expect(videos).toHaveLength(8);
+    for (const v of videos) {
+      expect(v.muted).toBe(true);
+      expect(v).toHaveAttribute("preload", "none");
+    }
   });
 
   test("page title is Used By", () => {

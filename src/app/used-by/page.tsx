@@ -54,22 +54,40 @@ export default function UsedByPage() {
           className="relative flex min-h-[92dvh] scroll-mt-0 items-end overflow-hidden border-t border-border-subtle"
         >
           <div className="absolute inset-0 -z-10">
-            {w.video ? (
-              <LoopVideo src={w.video} label={`${w.title} clip`} />
-            ) : (
-              <div
-                aria-hidden="true"
-                data-placeholder="video"
-                className="relative h-full w-full bg-background-secondary"
-              >
+            {w.video && !w.video.portrait && (
+              <>
+                <LoopVideo src={w.video} label={`${w.title} clip`} />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10" />
+              </>
+            )}
+
+            {w.video?.portrait && (
+              <>
+                {/* Phones: the tall clip fills the screen */}
+                <div className="h-full md:hidden">
+                  <LoopVideo src={w.video} label={`${w.title} clip`} />
+                </div>
+                {/* Desktop: blurred backdrop + the clip in a tall framed panel on the right */}
+                <div className="hidden h-full md:block">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- decorative blurred backdrop */}
+                  <img src={w.video.poster} alt="" className="h-full w-full scale-110 object-cover opacity-40 blur-2xl" />
+                  <div className="absolute right-[7vw] top-1/2 aspect-[9/16] h-[80%] -translate-y-1/2 overflow-hidden rounded-[6px] border border-border shadow-glow">
+                    <LoopVideo src={w.video} label={`${w.title} clip`} />
+                  </div>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent md:bg-gradient-to-r md:from-background md:via-background/70 md:to-transparent" />
+              </>
+            )}
+
+            {!w.video && (
+              <div aria-hidden="true" data-placeholder="video" className="relative h-full w-full bg-background-secondary">
                 <span className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgb(166_255_0/0.12),transparent_60%)]" />
                 <span className="absolute -right-[4vw] top-1/2 -translate-y-1/2 select-none font-display text-[clamp(10rem,34vw,32rem)] font-bold leading-none text-transparent opacity-35 [-webkit-text-stroke:2px_var(--color-foreground-subtle)]">
                   {pad(i + 1)}
                 </span>
+                <span className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10" />
               </div>
             )}
-            {/* Keeps the text readable over any footage */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10" />
           </div>
 
           <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-5 px-6 pb-16 md:px-14 md:pb-24">

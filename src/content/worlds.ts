@@ -1,17 +1,23 @@
 export type WorldId = "motocross" | "skate" | "bmx" | "surf" | "esports" | "music";
 
+export type WorldVideo = { mp4: string; webm: string; poster: string };
+
 export type World = {
   id: WorldId;
   title: string;
   line: string;
   stat: string;
-  /** Free-licence stock clips (Pexels / Pixabay). Files added in Task 10. */
-  video: { mp4: string; webm: string; poster: string };
+  /**
+   * Free-licence stock clip (Pexels / Pixabay), or null until the files are in /public/video.
+   * To add one: drop {id}.mp4, {id}.webm and {id}-poster.webp in public/video, then set `video: clip("{id}")`.
+   */
+  video: WorldVideo | null;
   /** Photographer / videographer credit, filled in when the clip is chosen. */
   credit: string;
 };
 
-const clip = (id: WorldId) => ({
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- used once the clips arrive
+const clip = (id: WorldId): WorldVideo => ({
   mp4: `/video/${id}.mp4`,
   webm: `/video/${id}.webm`,
   poster: `/video/${id}-poster.webp`,
@@ -23,7 +29,7 @@ export const worlds: readonly World[] = [
     title: "MOTOCROSS",
     line: "Dirt in the teeth. Throttle wide open.",
     stat: "AIRTIME > GROUND TIME",
-    video: clip("motocross"),
+    video: null, // clip("motocross") once the files are in public/video
     credit: "",
   },
   {
@@ -31,7 +37,7 @@ export const worlds: readonly World[] = [
     title: "SKATE",
     line: "Concrete doesn't forgive. Go anyway.",
     stat: "1 MORE TRY. ALWAYS.",
-    video: clip("skate"),
+    video: null, // clip("skate") once the files are in public/video
     credit: "",
   },
   {
@@ -39,7 +45,7 @@ export const worlds: readonly World[] = [
     title: "BMX",
     line: "Two wheels. Zero plan. Full send.",
     stat: "HANDS OFF. EYES UP.",
-    video: clip("bmx"),
+    video: null, // clip("bmx") once the files are in public/video
     credit: "",
   },
   {
@@ -47,7 +53,7 @@ export const worlds: readonly World[] = [
     title: "SURF",
     line: "The ocean picks the line. You hold on.",
     stat: "FIRST LIGHT. FIRST WAVE.",
-    video: clip("surf"),
+    video: null, // clip("surf") once the files are in public/video
     credit: "",
   },
   {
@@ -55,7 +61,7 @@ export const worlds: readonly World[] = [
     title: "ESPORTS",
     line: "Last round. Last life. No lag.",
     stat: "CLUTCH OR NOTHING.",
-    video: clip("esports"),
+    video: null, // clip("esports") once the files are in public/video
     credit: "",
   },
   {
@@ -63,7 +69,7 @@ export const worlds: readonly World[] = [
     title: "MUSIC",
     line: "Front row. Bass in the chest.",
     stat: "LOUDER THAN THE CROWD.",
-    video: clip("music"),
+    video: null, // clip("music") once the files are in public/video
     credit: "",
   },
 ] as const;

@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Monster Unleashed (concept): design tokens (Stage 2, locked) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Surfaces */
+  --color-background: #050605;
+  --color-background-secondary: #0c110a;
+  --color-background-tertiary: #1c2418;
+
+  /* Text */
+  --color-foreground: #f2f5ee;
+  --color-foreground-secondary: #c9d1c2;
+  --color-foreground-subtle: #8a9483;
+
+  /* Brand */
+  --color-brand: #a6ff00;
+  --color-brand-accent: #d4ff7a;
+
+  /* Lines and states */
+  --color-border: #3a4434; /* decorative only (2:1) */
+  --color-border-subtle: #1c2418;
+  --color-focus-ring: #a6ff00;
+  --color-error: #ef4444;
+
+  /* Flavour floods */
+  --color-flavor-original: #a6ff00;
+  --color-flavor-ultra: #e8ecef;
+  --color-flavor-paradise: #2bd4a8;
+  --color-flavor-mango: #ff8a1f;
+  --color-flavor-pipeline: #ff4f8b;
+
+  /* Fonts (loaded with next/font in layout.tsx) */
+  --font-display: var(--font-oswald);
+  --font-sans: var(--font-inter);
+
+  /* Type scale: 01 = largest */
+  --text-hero01: clamp(4.5rem, 14vw, 16rem);
+  --text-hero01--line-height: 0.9;
+  --text-hero02: clamp(3rem, 7vw, 6rem);
+  --text-hero02--line-height: 0.95;
+  --text-heading01: 3rem;
+  --text-heading01--line-height: 1;
+  --text-heading02: 2.25rem;
+  --text-heading02--line-height: 1.05;
+  --text-heading03: 1.5rem;
+  --text-heading03--line-height: 1.2;
+  --text-body01: 1.125rem;
+  --text-body01--line-height: 1.55;
+  --text-body02: 1rem;
+  --text-body02--line-height: 1.55;
+  --text-caption01: 0.8125rem;
+  --text-caption01--line-height: 1.4;
+  --text-caption02: 0.75rem;
+  --text-caption02--line-height: 1.4;
+
+  /* Space, shape, glow, motion */
+  --spacing-section: clamp(72px, 10vw, 140px);
+  --radius-pill: 9999px;
+  --shadow-glow: 0 0 80px rgb(166 255 0 / 0.35);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    color-scheme: dark;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-brand text-background;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 3px;
+  }
 }

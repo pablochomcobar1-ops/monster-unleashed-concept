@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Oswald } from "next/font/google";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
 import { SkipLink } from "@/components/layout/SkipLink";
+import { SoundProvider } from "@/components/sound/SoundProvider";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -29,8 +32,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${oswald.variable} ${inter.variable}`}>
       <body className="min-h-dvh">
-        <SkipLink />
-        <main id="main">{children}</main>
+        <SoundProvider>
+          <SkipLink />
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </SoundProvider>
       </body>
     </html>
   );

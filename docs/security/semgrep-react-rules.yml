@@ -1,0 +1,44 @@
+rules:
+  - id: dangerously-set-inner-html-not-json
+    message: dangerouslySetInnerHTML with something other than an escaped JSON.stringify(...) can inject HTML/scripts (XSS).
+    severity: ERROR
+    languages: [typescript]
+    patterns:
+      - pattern: |
+          <$EL dangerouslySetInnerHTML={{ __html: $X }} />
+      - pattern-not: |
+          <$EL dangerouslySetInnerHTML={{ __html: JSON.stringify($Y).replace(...) }} />
+  - id: eval-or-new-function
+    message: eval / new Function runs strings as code.
+    severity: ERROR
+    languages: [typescript]
+    pattern-either:
+      - pattern: eval(...)
+      - pattern: new Function(...)
+  - id: raw-dom-html-write
+    message: Writing raw HTML into the DOM bypasses React's escaping.
+    severity: ERROR
+    languages: [typescript]
+    pattern-either:
+      - pattern: $E.innerHTML = $X
+      - pattern: $E.outerHTML = $X
+      - pattern: document.write(...)
+      - pattern: $E.insertAdjacentHTML(...)
+  - id: blank-target-without-noopener
+    message: target="_blank" without rel="noopener noreferrer" lets the opened page control this tab (tabnabbing).
+    severity: WARNING
+    languages: [typescript]
+    patterns:
+      - pattern: |
+          <a target="_blank" ...>...</a>
+      - pattern-not: |
+          <a rel="noopener noreferrer" ...>...</a>
+  - id: href-from-variable
+    message: "href built from a variable: make sure it can never be a javascript URL from user input."
+    severity: INFO
+    languages: [typescript]
+    patterns:
+      - pattern: |
+          <a href={$X} ...>...</a>
+      - pattern-not: |
+          <a href={"..."} ...>...</a>

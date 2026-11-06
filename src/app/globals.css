@@ -161,3 +161,10 @@ html {
     transition: none;
   }
 }
+
+/* Marquee strip */
+@keyframes marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}

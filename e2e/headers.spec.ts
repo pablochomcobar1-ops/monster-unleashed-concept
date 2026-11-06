@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { gotoReady } from "./helpers";
 
 test("security headers are sent on every page", async ({ request }) => {
   for (const path of ["/", "/about", "/ingredients", "/used-by"]) {
@@ -15,7 +16,7 @@ test("security headers are sent on every page", async ({ request }) => {
 });
 
 test("unknown pages show the themed 404", async ({ page }) => {
-  const res = await page.goto("/nope");
+  const res = await gotoReady(page, "/nope");
   expect(res?.status()).toBe(404);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(/you rode off the map/i);
   await page.getByRole("link", { name: "Back to base" }).click();

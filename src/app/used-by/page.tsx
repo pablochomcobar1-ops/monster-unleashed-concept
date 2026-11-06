@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { worlds } from "@/content/worlds";
 import { GlitchTitle } from "@/components/media/GlitchTitle";
 import { LoopVideo } from "@/components/media/LoopVideo";
+import { AnchorLink } from "@/components/ui/AnchorLink";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -32,12 +33,12 @@ export default function UsedByPage() {
             <ul className="flex flex-wrap gap-2">
               {worlds.map((w) => (
                 <li key={w.id}>
-                  <a
+                  <AnchorLink
                     href={`#${w.id}`}
                     className="inline-flex min-h-11 items-center rounded-pill border border-foreground-subtle px-5 font-display text-caption01 uppercase tracking-[0.2em] text-foreground transition-colors hover:border-brand hover:text-brand"
                   >
                     {w.title}
-                  </a>
+                  </AnchorLink>
                 </li>
               ))}
             </ul>

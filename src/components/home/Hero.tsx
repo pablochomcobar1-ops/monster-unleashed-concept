@@ -2,6 +2,7 @@
 
 import { Fragment } from "react";
 import { motion } from "motion/react";
+import { AnchorLink } from "@/components/ui/AnchorLink";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
 const HEADLINE: { word: string; brand?: boolean }[] = [
@@ -58,18 +59,18 @@ export function Hero() {
         transition={{ duration: 0.6, delay: 0.7 }}
         className="flex flex-wrap gap-3"
       >
-        <a
+        <AnchorLink
           href="#picker"
           className="inline-flex min-h-12 items-center rounded-pill bg-brand px-7 font-display text-body02 font-semibold uppercase tracking-[0.15em] text-background transition-colors hover:bg-brand-accent"
         >
           Pick your beast
-        </a>
-        <a
+        </AnchorLink>
+        <AnchorLink
           href="#lineup"
           className="inline-flex min-h-12 items-center rounded-pill border border-foreground-subtle px-7 font-display text-body02 uppercase tracking-[0.15em] text-foreground transition-colors hover:border-foreground"
         >
           Meet the lineup
-        </a>
+        </AnchorLink>
       </motion.div>
 
       <p aria-hidden="true" className="mt-6 hidden text-caption02 uppercase tracking-[0.3em] text-foreground-subtle md:block">

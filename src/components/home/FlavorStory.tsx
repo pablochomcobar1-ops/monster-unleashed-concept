@@ -81,6 +81,7 @@ export function FlavorStory() {
   const [velocity, setVelocity] = useState(0);
   const settleTimer = useRef<number | undefined>(undefined);
   const firstChange = useRef(true);
+  const insideStory = useRef(true);
 
   useGSAP(
     () => {
@@ -101,6 +102,15 @@ export function FlavorStory() {
           window.clearTimeout(settleTimer.current);
           settleTimer.current = window.setTimeout(() => setVelocity(0), 150);
         },
+        // Past the story: back to brand green. Scrolling back up: the last flavour again.
+        onLeave: () => {
+          insideStory.current = false;
+          setFlood(flavors[0].color);
+        },
+        onEnterBack: () => {
+          insideStory.current = true;
+          setFlood(flavors[flavors.length - 1].color);
+        },
       });
     },
     { dependencies: [reduceMotion] },
@@ -108,6 +118,8 @@ export function FlavorStory() {
 
   // Flavour changed: fade the background glow and whoosh (skip the very first render).
   useEffect(() => {
+    // A fast jump past the story (e.g. the "Pick your beast" button) must not repaint the glow.
+    if (!insideStory.current) return;
     setFlood(flavors[active].color);
     if (firstChange.current) {
       firstChange.current = false;

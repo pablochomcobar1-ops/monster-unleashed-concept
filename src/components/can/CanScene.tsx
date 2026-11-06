@@ -24,7 +24,7 @@ const NECK_H = 0.22;
 
 export type CanSceneProps = {
   flavor: Flavor;
-  /** 0–1: one full spin of the can (driven by scroll in Task 6). */
+  /** Number of full turns (driven by scroll: 1 turn per screen). Whole numbers = front faces camera. */
   progress?: number;
   /** 0–1: scroll speed, makes the particles rush. */
   velocity?: number;

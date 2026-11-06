@@ -3,6 +3,7 @@ import { Inter, Oswald } from "next/font/google";
 import { Atmosphere } from "@/components/background/Atmosphere";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { SoundProvider } from "@/components/sound/SoundProvider";
 import "./globals.css";
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SoundProvider>
           <SkipLink />
           <Atmosphere />
+          <SmoothScroll />
           <Header />
           <main id="main">{children}</main>
           <Footer />

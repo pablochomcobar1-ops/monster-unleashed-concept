@@ -1,6 +1,11 @@
-import { CanPreview } from "@/components/can/CanPreview";
+import { FlavorStory } from "@/components/home/FlavorStory";
 
-// Temporary home page: 3D can test bench. Replaced by the real hero in Task 6.
 export default function Home() {
-  return <CanPreview />;
+  return (
+    <>
+      <FlavorStory />
+      {/* Worlds strip + "Pick your beast" land here in Task 7 */}
+      <section id="picker" aria-label="Pick your beast" className="min-h-[40vh]" />
+    </>
+  );
 }

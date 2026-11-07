@@ -58,4 +58,13 @@ describe("WorldsStrip", () => {
     const hrefs = screen.getAllByRole("link").map((a) => a.getAttribute("href"));
     expect(hrefs).toEqual(["motocross", "skate", "bmx", "surf", "esports", "music"].map((id) => `/used-by#${id}`));
   });
+
+  test("every card shows its world's poster, and its clip waits for hover (preload none)", () => {
+    const { container } = render(<WorldsStrip />);
+    const posters = [...container.querySelectorAll("a img")].map((img) => img.getAttribute("src"));
+    expect(posters).toEqual(["motocross", "skate", "bmx", "surf", "esports", "music"].map((id) => `/video/${id}-poster.webp`));
+    const videos = [...container.querySelectorAll("a video")];
+    expect(videos).toHaveLength(6);
+    for (const v of videos) expect(v).toHaveAttribute("preload", "none");
+  });
 });

@@ -200,3 +200,17 @@ html {
     animation: none;
   }
 }
+
+/* Horizontal strips: line the first card up with the page column on any screen width.
+   scroll-padding must equal the padding, or snap would nudge the strip on load (breaks LCP). */
+.strip-gutter {
+  --gutter: max(1.5rem, calc((100% - 1440px) / 2 + 1.5rem));
+  padding-inline: var(--gutter);
+  scroll-padding-inline: var(--gutter);
+}
+
+@media (min-width: 48rem) {
+  .strip-gutter {
+    --gutter: max(3.5rem, calc((100% - 1440px) / 2 + 3.5rem));
+  }
+}

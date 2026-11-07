@@ -53,7 +53,7 @@ export function WorldsStrip() {
 
       <ul
         ref={trackRef}
-        className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-6 pb-4 [scrollbar-width:none] md:px-14 motion-reduce:scroll-auto [&::-webkit-scrollbar]:hidden"
+        className="mt-10 flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto scroll-smooth px-6 pb-4 md:scroll-px-14 [scrollbar-width:none] md:px-14 motion-reduce:scroll-auto [&::-webkit-scrollbar]:hidden"
       >
         {worlds.map((w, i) => (
           <li key={w.id} className="w-[78vw] shrink-0 snap-start sm:w-[46vw] lg:w-[30vw] xl:w-[24vw]">

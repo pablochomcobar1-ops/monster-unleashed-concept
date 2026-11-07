@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import { BeastPicker } from "@/components/home/BeastPicker";
 import { FlavorStory } from "@/components/home/FlavorStory";
 import { WorldsStrip } from "@/components/home/WorldsStrip";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

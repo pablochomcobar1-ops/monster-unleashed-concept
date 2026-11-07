@@ -25,16 +25,16 @@ export function Footer() {
 
         <nav aria-label="Footer">
           <h2 className="mb-4 text-caption01 uppercase tracking-[0.25em] text-foreground-subtle">Explore</h2>
-          <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-body02 text-foreground-secondary hover:text-brand">
+                <Link href={link.href} className="inline-block py-1.5 text-body02 text-foreground-secondary hover:text-brand">
                   {link.label}
                 </Link>
               </li>
             ))}
             <li>
-              <a href={site.officialUrl} target="_blank" rel="noopener noreferrer" className="text-body02 text-foreground-secondary hover:text-brand">
+              <a href={site.officialUrl} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 text-body02 text-foreground-secondary hover:text-brand">
                 Official Monster site (opens in new tab)
               </a>
             </li>
@@ -46,11 +46,11 @@ export function Footer() {
           {credits.length === 0 ? (
             <p className="text-body02 text-foreground-subtle">Photo and video credits appear here.</p>
           ) : (
-            <ul className="flex flex-col gap-2 text-body02 text-foreground-secondary">
+            <ul className="flex flex-col text-body02 text-foreground-secondary">
               {credits.map((c) => (
                 <li key={c.url}>
                   {c.usedFor}:{" "}
-                  <a href={c.url} target="_blank" rel="noopener noreferrer" className="hover:text-brand">
+                  <a href={c.url} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-brand">
                     {c.who} / {c.source}
                   </a>
                 </li>

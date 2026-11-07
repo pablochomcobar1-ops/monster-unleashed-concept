@@ -44,7 +44,7 @@ function FlavorPanel({ index }: { index: number }) {
         </p>
         <Link
           href="/ingredients"
-          className="w-fit border-b border-foreground-subtle pb-1 text-caption01 uppercase tracking-[0.25em] text-foreground-secondary transition-colors hover:border-brand hover:text-brand"
+          className="inline-flex min-h-11 w-fit items-center border-b border-foreground-subtle text-caption01 uppercase tracking-[0.25em] text-foreground-secondary transition-colors hover:border-brand hover:text-brand"
         >
           See what&apos;s inside →
         </Link>
@@ -135,17 +135,17 @@ export function FlavorStory() {
   if (reduceMotion) return <StaticStory />;
 
   return (
-    <div data-pinned="true" className="mx-auto grid max-w-[1440px] grid-cols-1 px-6 md:grid-cols-2 md:gap-10 md:px-14">
+    <div data-pinned="true" className="mx-auto grid max-w-[1440px] grid-cols-1 overflow-x-clip px-6 md:grid-cols-2 md:gap-10 md:px-14">
       {/* Can stage: sticky. Behind the text on phones, right column on desktop. */}
       <div className="col-start-1 row-start-1 md:col-start-2">
         <div className="sticky top-0 h-dvh">
           <p
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-[30%] -translate-y-1/2 select-none md:top-1/2 text-center font-display text-hero01 font-bold uppercase text-transparent opacity-50 [-webkit-text-stroke:2px_var(--flood)] md:-left-1/2"
+            className="pointer-events-none absolute inset-x-0 top-[30%] -translate-y-1/2 select-none md:top-1/2 text-center font-display text-hero01 font-bold uppercase text-transparent opacity-50 [-webkit-text-stroke:2px_var(--flood)] lg:-left-1/2"
           >
             Unleash
           </p>
-          <div className="absolute inset-x-0 top-[9vh] h-[50vh] md:inset-y-[8vh] md:top-[8vh] md:h-auto">
+          <div className="absolute inset-x-0 top-[10vh] h-[44vh] md:inset-y-[8vh] md:top-[8vh] md:h-auto">
             <CanStage
               flavorId={flavors[active].id}
               progress={progress}

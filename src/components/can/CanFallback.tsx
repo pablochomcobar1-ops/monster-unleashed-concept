@@ -11,7 +11,7 @@ export function CanFallback({ flavor, className }: { flavor: Flavor; className?:
       <div
         role="img"
         aria-label={`${flavor.name} can`}
-        className="relative aspect-[1/2.55] h-[min(62vh,520px)] overflow-hidden rounded-[18%/7%] shadow-[0_40px_80px_rgb(0_0_0/0.6)]"
+        className="relative aspect-[1/2.55] h-[92%] max-h-[520px] overflow-hidden rounded-[18%/7%] shadow-[0_40px_80px_rgb(0_0_0/0.6)]"
         style={{
           background: `linear-gradient(90deg, #0b0d0a 0%, #232821 22%, #3a4136 38%, #151814 62%, #050605 100%)`,
         }}
@@ -24,7 +24,7 @@ export function CanFallback({ flavor, className }: { flavor: Flavor; className?:
         <span
           aria-hidden="true"
           className="absolute inset-0 flex items-center justify-center font-display font-bold uppercase text-background"
-          style={{ writingMode: "vertical-rl", fontSize: "clamp(1rem, 3.2vh, 1.75rem)", letterSpacing: "0.15em" }}
+          style={{ writingMode: "vertical-rl", fontSize: "clamp(0.875rem, 2.8vh, 1.75rem)", letterSpacing: "0.15em" }}
         >
           {flavor.name}
         </span>

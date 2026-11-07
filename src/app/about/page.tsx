@@ -5,6 +5,7 @@ import { Marquee } from "@/components/ui/Marquee";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About",
   description:
     "The attitude behind the beast: no fear, no brakes. An unofficial concept redesign by Pablo Chomcobar.",
@@ -33,18 +34,18 @@ export default function AboutPage() {
     <>
       {/* Manifesto */}
       <section className="mx-auto flex min-h-[88dvh] max-w-[1440px] flex-col justify-end gap-8 px-6 pb-16 pt-32 md:px-14">
-        <Reveal>
+        <Reveal immediate>
           <p className="text-caption01 uppercase tracking-[0.35em] text-foreground-subtle">About the beast</p>
         </Reveal>
         <h1 className="font-display text-hero01 font-bold uppercase">
-          <Reveal as="span" delay={0.05} className="block">
+          <Reveal immediate as="span" delay={0.05} className="block">
             Born
           </Reveal>
-          <Reveal as="span" delay={0.12} className="block text-brand">
+          <Reveal immediate as="span" delay={0.12} className="block text-brand">
             loud.
           </Reveal>
         </h1>
-        <Reveal delay={0.2} className="max-w-xl">
+        <Reveal immediate delay={0.2} className="max-w-xl">
           <p className="text-body01 text-foreground-secondary">
             Not built for the couch. Built for the ones who ride first and think about it on the way home.
           </p>

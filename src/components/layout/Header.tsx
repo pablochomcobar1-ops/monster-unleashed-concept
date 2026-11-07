@@ -25,6 +25,8 @@ export function Header() {
 
   return (
     <motion.header
+      // Keyboard users tabbing into a hidden header must see it.
+      onFocusCapture={() => setHidden(false)}
       initial={false}
       animate={{ y: hidden ? "-100%" : "0%" }}
       transition={reduceMotion ? { duration: 0 } : { duration: 0.35, ease: [0.16, 1, 0.3, 1] }}

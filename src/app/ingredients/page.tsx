@@ -5,6 +5,7 @@ import { StatStrip } from "@/components/ingredients/StatStrip";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/ingredients" },
   title: "Ingredients",
   description:
     "What's inside each can, in plain words: caffeine, taurine, B-vitamins and more, plus the label numbers for every flavour.",
@@ -19,18 +20,18 @@ export default function IngredientsPage() {
     <>
       {/* Intro */}
       <section className="mx-auto flex min-h-[70dvh] max-w-[1440px] flex-col justify-end gap-8 px-6 pb-16 pt-32 md:px-14">
-        <Reveal>
+        <Reveal immediate>
           <p className="text-caption01 uppercase tracking-[0.35em] text-foreground-subtle">Ingredients</p>
         </Reveal>
         <h1 className="font-display text-hero01 font-bold uppercase">
-          <Reveal as="span" delay={0.05} className="block">
+          <Reveal immediate as="span" delay={0.05} className="block">
             What&apos;s
           </Reveal>
-          <Reveal as="span" delay={0.12} className="block text-brand">
+          <Reveal immediate as="span" delay={0.12} className="block text-brand">
             inside.
           </Reveal>
         </h1>
-        <Reveal delay={0.2} className="max-w-xl">
+        <Reveal immediate delay={0.2} className="max-w-xl">
           <p className="text-body01 text-foreground-secondary">
             No magic. Just a label. Here&apos;s what&apos;s on it, in plain words.
           </p>

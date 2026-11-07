@@ -6,6 +6,7 @@ import { AnchorLink } from "@/components/ui/AnchorLink";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/used-by" },
   title: "Used By",
   description: "Motocross, skate, BMX, surf, esports and music: the worlds where the beast runs.",
 };
@@ -17,18 +18,18 @@ export default function UsedByPage() {
     <>
       {/* Intro */}
       <section className="mx-auto flex min-h-[70dvh] max-w-[1440px] flex-col justify-end gap-8 px-6 pb-16 pt-32 md:px-14">
-        <Reveal>
+        <Reveal immediate>
           <p className="text-caption01 uppercase tracking-[0.35em] text-foreground-subtle">Used by</p>
         </Reveal>
         <h1 className="font-display text-hero01 font-bold uppercase">
-          <Reveal as="span" delay={0.05} className="block">
+          <Reveal immediate as="span" delay={0.05} className="block">
             The ones
           </Reveal>
-          <Reveal as="span" delay={0.12} className="block text-brand">
+          <Reveal immediate as="span" delay={0.12} className="block text-brand">
             who go.
           </Reveal>
         </h1>
-        <Reveal delay={0.2}>
+        <Reveal immediate delay={0.2}>
           <nav aria-label="Worlds">
             <ul className="flex flex-wrap gap-2">
               {worlds.map((w) => (
